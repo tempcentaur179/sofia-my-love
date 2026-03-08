@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sofia ❤️</title>
+
+<style>
+
+body{
+margin:0;
+overflow:hidden;
+background:black;
+font-family:Arial;
+color:white;
+}
+
+/* estrelas */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+opacity:0.8;
+animation: piscar 2s infinite alternate;
+}
+
+@keyframes piscar{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* itens subindo */
+
+.item{
+position:absolute;
+color:#ff4d6d;
+font-weight:bold;
+text-shadow:0 0 10px #ff4d6d;
+animation: subir linear forwards;
+}
+
+@keyframes subir{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+/* mensagem central */
+
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:60px;
+color:#ff4d6d;
+text-shadow:0 0 30px #ff4d6d;
+animation: aparecer 4s ease-in-out;
+}
+
+@keyframes aparecer{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* data final */
+
+.data{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+font-size:28px;
+color:white;
+text-shadow:0 0 10px pink;
+opacity:0;
+animation: dataAparecer 5s forwards;
+animation-delay:8s;
+}
+
+@keyframes dataAparecer{
+to{opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="center">Sofia ❤️</div>
+<div class="data">19/09</div>
+
+<script>
+
+/* estrelas */
+
+for(let i=0;i<120;i++){
+let star=document.createElement("div")
+star.className="star"
+star.style.left=Math.random()*100+"vw"
+star.style.top=Math.random()*100+"vh"
+star.style.animationDuration=(1+Math.random()*2)+"s"
+document.body.appendChild(star)
+}
+
+/* palavras */
+
+const palavras=[
+"❤️",
+"Sofia",
+"bobaiona",
+"meu grudinhu",
+"eu te amo",
+"minha princesa",
+"minha vida",
+"meu amor",
+"amo você",
+"você é perfeita",
+"meu coração é seu",
+"eu amo você Sofia",
+"minha bobaiona linda"
+]
+
+function criar(){
+
+let el=document.createElement("div")
+el.className="item"
+
+el.innerHTML=palavras[Math.floor(Math.random()*palavras.length)]
+
+el.style.left=Math.random()*100+"vw"
+el.style.fontSize=(20+Math.random()*30)+"px"
+el.style.animationDuration=(4+Math.random()*4)+"s"
+
+document.body.appendChild(el)
+
+setTimeout(()=>{el.remove()},8000)
+
+}
+
+setInterval(criar,150)
+
+</script>
+
+</body>
+</html>
